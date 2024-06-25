@@ -1,0 +1,8 @@
+# IDEA Files
+.idea/
+
+# Botica internal files
+.botica/
+
+# Bot output files
+/output/*

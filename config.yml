@@ -1,0 +1,84 @@
+broker:
+  type: rabbitmq
+  username: "username"
+  password: "password"
+  port: 5672
+
+bots:
+  generator:
+    image: "botica-bot-restest-generator"
+    mount:
+      - source: "./resources"
+        target: "/app/resources"
+      - source: "./resources/config.properties"
+        target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
+      - source: "./output"
+        target: "/app/output"
+    lifecycle:
+      type: proactive
+      initialDelay: 0
+      period: 60
+    publish:
+      key: "test_execution"
+      order: "execute_test_cases"
+    instances:
+      generator-anapioficeandfire:
+        persistent: true
+        environment:
+          - USER_CONFIG_PATH=/app/resources/anapioficeandfire.com/user-config.properties
+      generator-restcountries:
+        persistent: true
+        environment:
+          - USER_CONFIG_PATH=/app/resources/restcountries.com/user-config.properties
+#      generator-amadeus:
+#        persistent: true
+#        environment:
+#          - USER_CONFIG_PATH=/app/resources/amadeus.com/user-config.properties
+
+  executor:
+    image: "botica-bot-restest-executor"
+    mount:
+      - source: "./resources"
+        target: "/app/resources"
+      - source: "./resources/config.properties"
+        target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
+      - source: "./output"
+        target: "/app/output"
+    lifecycle:
+      type: reactive
+      order: "execute_test_cases"
+    publish:
+      key: "test_reporting"
+      order: "generate_test_report"
+    subscribe: [ "test_execution" ]
+    instances:
+      executor-1:
+        persistent: true
+      executor-2:
+        persistent: true
+      executor-3:
+        persistent: true
+
+  reporter:
+    image: "botica-bot-restest-reporter"
+    mount:
+      - source: "./RESTest/allure"
+        target: "/app/allure"
+      - source: "./resources"
+        target: "/app/resources"
+      - source: "./resources/config.properties"
+        target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
+      - source: "./output"
+        target: "/app/output"
+    lifecycle:
+      type: reactive
+      order: "generate_test_report"
+    publish:
+      key: "testReportGenerated"
+      order: "test"
+    subscribe: [ "test_reporting" ]
+    instances:
+      reporter-1:
+        persistent: true
+      reporter-2:
+        persistent: true

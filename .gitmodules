@@ -1,0 +1,3 @@
+[submodule "RESTest"]
+	path = RESTest
+	url = https://github.com/isa-group/RESTest/
