@@ -14,6 +14,7 @@ bots:
         target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
       - source: "./output"
         target: "/app/output"
+        createHostPath: true
     lifecycle:
       type: proactive
       initialDelay: 0
@@ -23,15 +24,12 @@ bots:
       order: "execute_test_cases"
     instances:
       generator-anapioficeandfire:
-        persistent: true
         environment:
           - USER_CONFIG_PATH=/app/resources/anapioficeandfire.com/user-config.properties
       generator-restcountries:
-        persistent: true
         environment:
           - USER_CONFIG_PATH=/app/resources/restcountries.com/user-config.properties
 #      generator-amadeus:
-#        persistent: true
 #        environment:
 #          - USER_CONFIG_PATH=/app/resources/amadeus.com/user-config.properties
 
@@ -44,20 +42,18 @@ bots:
         target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
       - source: "./output"
         target: "/app/output"
+        createHostPath: true
     lifecycle:
       type: reactive
+      keys: [ "test_execution" ]
       order: "execute_test_cases"
     publish:
       key: "test_reporting"
       order: "generate_test_report"
-    subscribe: [ "test_execution" ]
     instances:
-      executor-1:
-        persistent: true
-      executor-2:
-        persistent: true
-      executor-3:
-        persistent: true
+      executor-1: { }
+      executor-2: { }
+      executor-3: { }
 
   reporter:
     image: "botica-bot-restest-reporter"
@@ -70,15 +66,11 @@ bots:
         target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
       - source: "./output"
         target: "/app/output"
+        createHostPath: true
     lifecycle:
       type: reactive
+      keys: [ "test_reporting" ]
       order: "generate_test_report"
-    publish:
-      key: "testReportGenerated"
-      order: "test"
-    subscribe: [ "test_reporting" ]
     instances:
-      reporter-1:
-        persistent: true
-      reporter-2:
-        persistent: true
+      reporter-1: { }
+      reporter-2: { }
