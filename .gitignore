@@ -1,8 +1,17 @@
+# DS_Store Files
+**/.DS_Store
+
 # IDEA Files
 .idea/
+*.iml
 
-# Botica internal files
+# VSCode Settings
+.vscode/
+
+# Botica Director Files
 .botica/
+.botica-director-version
+botica-director.jar
 
 # Bot output files
 /output/
