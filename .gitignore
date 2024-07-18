@@ -1,0 +1,14 @@
+# DS_Store Files
+**/.DS_Store
+
+# IDEA Files
+.idea/
+*.iml
+
+# VSCode Settings
+.vscode/
+
+# Botica Director Files
+.botica/
+.botica-director-version
+botica-director.jar

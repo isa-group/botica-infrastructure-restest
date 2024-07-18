@@ -1,0 +1,51 @@
+# Check https://github.com/isa-group/botica/wiki/The-main-configuration-file for a complete guide.
+broker:
+  type: rabbitmq
+  username: "username"
+  password: "password"
+  port: 5672
+
+bots:
+  my-bot:
+    image: "my-bot-image"
+    mount:
+      - source: "path/to/host/file.extension"
+        target: "path/to/container/file.extension"
+      - source: "path/to/host/directory"
+        target: "path/to/container/directory"
+        createHostPath: true
+    lifecycle:
+      type: proactive
+      initialDelay: 60
+      period: 60
+    environment:
+      - KEY=VALUE
+    publish:
+      key: "publish_key"
+      order: "execute_order"
+    instances:
+      bot-1: { }
+      bot-2: { }
+      bot-3:
+        lifecycle: # overriding lifecycle configuration
+          type: proactive
+          initialDelay: 30
+          period: 30
+        environment: # these are combined with the already defined variables for the bot type
+          - KEY2=VALUE2
+      bot-4:
+        environment:
+          - KEY3=VALUE3
+
+  my-other-bot:
+    image: "my-other-bot-image"
+    lifecycle:
+      type: reactive
+      keys: [ "publish_key" ]
+      order: "execute_order"
+    publish:
+      key: "another_key"
+      order: "execute_the_other_order"
+    instances:
+      bot-5: { }
+      bot-6: { }
