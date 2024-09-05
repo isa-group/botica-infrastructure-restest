@@ -15,13 +15,13 @@ bots:
       - source: "./output"
         target: "/app/output"
         createHostPath: true
+    publish:
+      key: "test_execution"
+      order: "execute_test_cases"
     lifecycle:
       type: proactive
       initialDelay: 0
       period: 60
-    publish:
-      key: "test_execution"
-      order: "execute_test_cases"
     instances:
       generator-anapioficeandfire:
         environment:
@@ -43,13 +43,15 @@ bots:
       - source: "./output"
         target: "/app/output"
         createHostPath: true
-    lifecycle:
-      type: reactive
-      keys: [ "test_execution" ]
-      order: "execute_test_cases"
     publish:
       key: "test_reporting"
       order: "generate_test_report"
+    subscribe:
+      - key: "test_execution"
+        strategy: distributed
+    lifecycle:
+      type: reactive
+      order: "execute_test_cases"
     instances:
       executor-1: { }
       executor-2: { }
@@ -67,9 +69,11 @@ bots:
       - source: "./output"
         target: "/app/output"
         createHostPath: true
+    subscribe:
+      - key: "test_reporting"
+        strategy: distributed
     lifecycle:
       type: reactive
-      keys: [ "test_reporting" ]
       order: "generate_test_report"
     instances:
       reporter-1: { }
