@@ -18,78 +18,144 @@ bots:
       order: "execute_test_cases"
     lifecycle:
       type: proactive
-      period: 60
+      period: 100
     instances:
       generator-marvel-r-art-custom:
+        lifecycle:
+          type: proactive
+          period: 345
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_art_custom/props.properties
       generator-marvel-r-ft:
+        lifecycle:
+          type: proactive
+          period: 345
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_ft_/props.properties
       generator-marvel-r-rt-custom:
+        lifecycle:
+          type: proactive
+          period: 345
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_rt_custom/props.properties
       generator-marvel-r-rt-perturbation:
+        lifecycle:
+          type: proactive
+          period: 345
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_rt_perturbation/props.properties
-      generator-marvel-r-rt-stateful:
-        environment:
-          - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_rt_stateful/props.properties
+#      generator-marvel-r-rt-stateful
+#        environment:
+#          - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_rt_stateful/props.properties
 
       generator-stripe-r-cbt-custom:
+        lifecycle:
+          type: proactive
+          period: 100
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/r_cbt_custom/props.properties
       generator-stripe-rw-art-custom:
+        lifecycle:
+          type: proactive
+          period: 100
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_art_custom/props.properties
       generator-stripe-rw-cbt-custom:
+        lifecycle:
+          type: proactive
+          period: 100
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_cbt_custom/props.properties
       generator-stripe-rw-cbt-perturbation:
+        lifecycle:
+          type: proactive
+          period: 100
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_cbt_perturbation/props.properties
       generator-stripe-rw-cbt-stateful:
+        lifecycle:
+          type: proactive
+          period: 100
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_cbt_stateful/props.properties
       generator-stripe-rw-ft:
+        lifecycle:
+          type: proactive
+          period: 100
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_ft_/props.properties
       generator-stripe-rw-rt-custom:
+        lifecycle:
+          type: proactive
+          period: 100
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_rt_custom/props.properties
 
       generator-omdb-r-cbt-custom:
+        lifecycle:
+          type: proactive
+          period: 259
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_cbt_custom/props.properties
       generator-omdb-r-cbt-perturbation:
+        lifecycle:
+          type: proactive
+          period: 259
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_cbt_perturbation/props.properties
       generator-omdb-r-cbt-semantic:
+        lifecycle:
+          type: proactive
+          period: 259
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_cbt_semantic/props.properties
       generator-omdb-r-cbt-stateful:
+        lifecycle:
+          type: proactive
+          period: 259
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_cbt_stateful/props.properties
       generator-omdb-r-ft:
+        lifecycle:
+          type: proactive
+          period: 259
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_ft_/props.properties
       generator-omdb-r-rt-custom:
+        lifecycle:
+          type: proactive
+          period: 259
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_rt_custom/props.properties
 
       generator-restcountries-r-ft:
+        lifecycle:
+          type: proactive
+          period: 345
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Restcountries/r_ft_/props.properties
       generator-restcountries-r-rt-custom:
+        lifecycle:
+          type: proactive
+          period: 345
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Restcountries/r_rt_custom/props.properties
       generator-restcountries-r-rt-perturbation:
+        lifecycle:
+          type: proactive
+          period: 345
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Restcountries/r_rt_perturbation/props.properties
       generator-restcountries-r-rt-semantic:
+        lifecycle:
+          type: proactive
+          period: 345
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Restcountries/r_rt_semantic/props.properties
       generator-restcountries-r-rt-stateful:
+        lifecycle:
+          type: proactive
+          period: 345
         environment:
           - USER_CONFIG_PATH=src/test/resources/taas_eval/Restcountries/r_rt_stateful/props.properties
 
@@ -117,9 +183,6 @@ bots:
       executor-4: { }
       executor-5: { }
       executor-6: { }
-      executor-7: { }
-      executor-8: { }
-      executor-9: { }
 
   reporter:
     image: "botica-bot-restest-reporter"
