@@ -1,0 +1,342 @@
+{
+  "GET/": {
+    "Response": [
+      "False",
+      "True"
+    ],
+    "Error": [
+      "Incorrect IMDb ID.",
+      "Movie not found!",
+      "Series not found!"
+    ],
+    "Search.Title": [
+      "The Argumentative Indian",
+      "Divine Manipulation of the Threads",
+      "A Football Star Called Divine: Life and Work of Ademir da Guia",
+      "The Divine Ms. Susann",
+      "The Boy with Divine Powers",
+      "The Divine Brown: Million Dollar Hooker - A True Story",
+      "Divine Comedy: Hawaii 2006",
+      "The Divine Comedy: Diva Lady",
+      "Divine Light: A Frank Mason Perspective",
+      "Divine Dancers: Live from Prague",
+      "Divine Life",
+      "Star Wars",
+      "Star Wars: Episode V - The Empire Strikes Back",
+      "Star Wars: Episode VI - Return of the Jedi",
+      "Star Wars: Episode VII - The Force Awakens",
+      "Star Wars: Episode I - The Phantom Menace",
+      "Star Wars: Episode III - Revenge of the Sith",
+      "Star Wars: Episode II - Attack of the Clones",
+      "Star Trek",
+      "Star Wars: Episode VIII - The Last Jedi",
+      "Star Trek Into Darkness",
+      "Attacking the Devil: Harold Evans and the Last Nazi War Crime",
+      "Attacking the Darkness",
+      "Attacking Troy",
+      "Trump Criticizes Inept Puerto Rican Officials, Legacy Media Pretends He's Attacking Puerto Ricans",
+      "Vikings: Season 3 - A City Under Siege, Creating and Attacking Paris",
+      "Attacking the Girls",
+      "How to Play as an Attacking Midfielder?",
+      "The Challenge of Flight - Attacking Wildfires",
+      "Spanish Infantry Attacking American Soldiers in Camp",
+      "Death on Arrival, Vol. 1: Animals Attacking Humans, Humans Attacking Animals",
+      "Lock, Stock and Two Smoking Barrels",
+      "Summer Stock",
+      "Lock, Stock...",
+      "Wood & Stock: Sexo, Orégano e Rock'n'Roll",
+      "Old Stock",
+      "Stock Shock",
+      "Taking Stock",
+      "Stock Option",
+      "Stock Car",
+      "Lock, Stock and Barrel"
+    ],
+    "Search.Year": [
+      "2017",
+      "2006",
+      "2006–2007",
+      "1977",
+      "1980",
+      "1983",
+      "2015",
+      "1999",
+      "2005",
+      "2002",
+      "2009",
+      "2013",
+      "2014",
+      "2007",
+      "1979",
+      "2019",
+      "2020",
+      "1898",
+      "1996",
+      "1998",
+      "1950",
+      "2000",
+      "2012",
+      "1955",
+      "1971"
+    ],
+    "Search.imdbID": [
+      "tt6523702",
+      "tt0784988",
+      "tt1239321",
+      "tt0850273",
+      "tt3477374",
+      "tt5740928",
+      "tt6266208",
+      "tt12148512",
+      "tt0905600",
+      "tt1401694",
+      "tt1773146",
+      "tt0076759",
+      "tt0080684",
+      "tt0086190",
+      "tt2488496",
+      "tt0120915",
+      "tt0121766",
+      "tt0121765",
+      "tt0796366",
+      "tt2527336",
+      "tt1408101",
+      "tt3779818",
+      "tt5176604",
+      "tt5490316",
+      "tt7448254",
+      "tt7890978",
+      "tt9708326",
+      "tt12358238",
+      "tt13009360",
+      "tt0220769",
+      "tt0398014",
+      "tt0120735",
+      "tt0043012",
+      "tt0243714",
+      "tt0356201",
+      "tt2112219",
+      "tt1460652",
+      "tt2073091",
+      "tt4893328",
+      "tt0048659",
+      "tt0065993"
+    ],
+    "Search.Type": [
+      "movie",
+      "series"
+    ],
+    "Search.Poster": [
+      "N/A",
+      "https://m.media-amazon.com/images/M/MV5BMTcyMTk1MDMwNF5BMl5BanBnXkFtZTcwMzc5NzE0MQ@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BOTg2M2Y1MGUtZDQwOS00ODFlLTk4Y2MtY2Q1ZmNhMzIxYjE5XkEyXkFqcGdeQXVyMTgwOTE5NDk@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMDFhOGQ0MzQtNzIyOS00ZGI3LWI4YWUtNDJjNzlhODRhMWJjXkEyXkFqcGdeQXVyMzg2MjAzNzU@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BNzFlNjQzMjEtZjUzZC00ZGE4LWIyOTYtYjhkMmRjMTU1MzBlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyODc4NzczNQ@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BYTRhNjcwNWQtMGJmMi00NmQyLWE2YzItODVmMTdjNWI0ZDA2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BNTc4MTc3NTQ5OF5BMl5BanBnXkFtZTcwOTg0NjI4NA@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMDAzM2M0Y2UtZjRmZi00MzVlLTg4MjEtOTE3NzU5ZDVlMTU5XkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMjE5NDQ5OTE4Ml5BMl5BanBnXkFtZTcwOTE3NDIzMw@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMTk2NzczOTgxNF5BMl5BanBnXkFtZTcwODQ5ODczOQ@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BZWE4MDhmM2YtMmVlNy00MjRkLTg0OTktMmM2NmI4ZGFjMTA0XkEyXkFqcGdeQXVyNzQ5MzY0NjM@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BY2ZkZGU4YzMtZmRhNC00ZGEyLTk4ZWItMzAzZmJhMmZhMmFmXkEyXkFqcGdeQXVyNDUxNjc5NjY@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BYjIzMzViYjMtYTczZi00MzFjLTgxMTQtOTZmNGU0OGNjOGJiXkEyXkFqcGdeQXVyMDY3OTcyOQ@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMmI3YTYyODEtZDBhMS00YmU2LWJmMzMtMTg1MDFhYjBjNjkwXkEyXkFqcGdeQXVyMjIzOTk5MzA@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMTAyN2JmZmEtNjAyMy00NzYwLThmY2MtYWQ3OGNhNjExMmM4XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BZmU3ZWUyNDEtZjc0MS00NzQ5LWI3MjAtODc1MzUwZmU4ZWIwXkEyXkFqcGdeQXVyNTkxMzEwMzU@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BZTFjZjRkYjMtZDkyOS00NDJiLTkyOGQtOTUxNjVkY2YzYjY5XkEyXkFqcGdeQXVyNzQzODU1NTM@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BZDFhM2Q4N2UtZDMyNi00MGYzLTkwNzQtMGViZjNmYThiMDRmXkEyXkFqcGdeQXVyNjU2NjEyNDc@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMzUzNTcxNzAxNF5BMl5BanBnXkFtZTcwNTAxMjE0OQ@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMjA5ODAwNTIzOV5BMl5BanBnXkFtZTcwMzQwMTM3Mg@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMjQxODE4MDgwOV5BMl5BanBnXkFtZTgwMjg0MTg2NzE@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMTUzMTcxOTQxNl5BMl5BanBnXkFtZTgwMjg4OTM2NzE@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BN2RkY2FlZTctNzU1Yi00NjFjLTk3YWEtNTdkODY1MTBkYzc5XkEyXkFqcGdeQXVyMDY4MzkyNw@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMTcxMTU2NDQxOF5BMl5BanBnXkFtZTcwNDY4ODU5Mw@@._V1_SX300.jpg"
+    ],
+    "totalResults": [
+      "1",
+      "10",
+      "3585",
+      "13",
+      "126"
+    ],
+    "Title": [
+      "Null kolm",
+      "The Argumentative Indian",
+      "Vikings: Season 3 - A City Under Siege, Creating and Attacking Paris",
+      "Death on Arrival, Vol. 1: Animals Attacking Humans, Humans Attacking Animals",
+      "The Divine Comedy: Diva Lady",
+      "How to Play as an Attacking Midfielder?",
+      "Star Trek",
+      "Star Wars: Episode IX - The Rise of Skywalker",
+      "Divine Comedy: Hawaii 2006"
+    ],
+    "Year": [
+      "1965",
+      "2017",
+      "2015",
+      "1996",
+      "2006",
+      "2019",
+      "2009"
+    ],
+    "Rated": [
+      "Not Rated",
+      "N/A",
+      "PG-13"
+    ],
+    "Released": [
+      "27 Jan 1965",
+      "N/A",
+      "06 Oct 2015",
+      "12 Jun 2006",
+      "08 May 2009",
+      "20 Dec 2019"
+    ],
+    "Runtime": [
+      "77 min",
+      "60 min",
+      "N/A",
+      "88 min",
+      "4 min",
+      "10 min",
+      "127 min",
+      "141 min",
+      "47 min"
+    ],
+    "Genre": [
+      "Drama",
+      "Documentary, Biography",
+      "Documentary, Short",
+      "Documentary",
+      "Short, Music",
+      "Short, Sport",
+      "Action, Adventure, Sci-Fi",
+      "Action, Adventure, Fantasy",
+      "N/A"
+    ],
+    "Director": [
+      "Igor Yeltsov",
+      "Suman Ghosh",
+      "N/A",
+      "J.J. Abrams",
+      "Peyton Buhler"
+    ],
+    "Writer": [
+      "Nora Adamjan, Yakov Volchek",
+      "N/A",
+      "Neil Hannon",
+      "Roberto Orci, Alex Kurtzman, Gene Roddenberry",
+      "Chris Terrio, J.J. Abrams, Derek Connolly"
+    ],
+    "Actors": [
+      "Ninel Myshkova, Ivan Dmitriev, Tatyana Pelttser",
+      "N/A",
+      "Joan Bergin, Jochen Burgtorf, Travis Fimmel, Mark Geraghty",
+      "Fred Bock, Frank Tempest",
+      "The Divine Comedy, Neil Hannon",
+      "Chris Pine, Zachary Quinto, Simon Pegg",
+      "Daisy Ridley, John Boyega, Oscar Isaac",
+      "Peyton Buhler, Taylor Busby, Hillary Caruthers, Trevor Clive"
+    ],
+    "Plot": [
+      "Zero 3 is the kind of movie you can watch over and over without getting bored. It has got it covered with all the different styles of riding you see now. From world champ Kim Reichhelm ...",
+      "A documentary on the Indian Nobel Laureate Amartya Sen",
+      "N/A",
+      "The brash James T. Kirk tries to live up to his father's legacy with Mr. Spock keeping him in check as a vengeful Romulan from the future creates black holes to destroy the Federation one planet at a time.",
+      "In the riveting conclusion of the landmark Skywalker saga, new legends will be born-and the final battle for freedom is yet to come.",
+      "The cast and crew of BYU's Divine Comedy trade Utah snow for 5 days in paradise."
+    ],
+    "Language": [
+      "Estonian",
+      "English"
+    ],
+    "Country": [
+      "Soviet Union",
+      "India, USA, UK",
+      "USA",
+      "UK",
+      "United Kingdom",
+      "United States, Germany",
+      "United States"
+    ],
+    "Awards": [
+      "N/A",
+      "Won 1 Oscar. 27 wins & 95 nominations total",
+      "Nominated for 3 Oscars. 11 wins & 59 nominations total"
+    ],
+    "Poster": [
+      "https://m.media-amazon.com/images/M/MV5BNDMwMzNlMGQtNTc3MS00M2NjLWI3OGItMzBmZWYxMzQwZmZhXkEyXkFqcGdeQXVyMzg1ODEwNQ@@._V1_SX300.jpg",
+      "N/A",
+      "https://m.media-amazon.com/images/M/MV5BMjE5NDQ5OTE4Ml5BMl5BanBnXkFtZTcwOTE3NDIzMw@@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMDljNTQ5ODItZmQwMy00M2ExLTljOTQtZTVjNGE2NTg0NGIxXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_SX300.jpg",
+      "https://m.media-amazon.com/images/M/MV5BNzFlNjQzMjEtZjUzZC00ZGE4LWIyOTYtYjhkMmRjMTU1MzBlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyODc4NzczNQ@@._V1_SX300.jpg"
+    ],
+    "Ratings.Source": [
+      "Internet Movie Database",
+      "Metacritic",
+      "Rotten Tomatoes"
+    ],
+    "Ratings.Value": [
+      "6.0/10",
+      "7.9/10",
+      "82/100",
+      "6.6/10",
+      "51%",
+      "53/100"
+    ],
+    "Metascore": [
+      "N/A",
+      "82",
+      "53"
+    ],
+    "imdbRating": [
+      "6.0",
+      "N/A",
+      "7.9",
+      "6.6"
+    ],
+    "imdbVotes": [
+      "13",
+      "N/A",
+      "586,642",
+      "396,939"
+    ],
+    "imdbID": [
+      "tt0447331",
+      "tt6523702",
+      "tt7890978",
+      "tt0398014",
+      "tt12148512",
+      "tt12358238",
+      "tt0796366",
+      "tt2527338",
+      "tt6266208"
+    ],
+    "Type": [
+      "movie"
+    ],
+    "DVD": [
+      "N/A",
+      "17 Nov 2009",
+      "20 Dec 2019"
+    ],
+    "BoxOffice": [
+      "N/A",
+      "$257,730,019",
+      "$515,202,542"
+    ],
+    "Production": [
+      "N/A",
+      "Bad Robot",
+      "Lucasfilm Ltd., Bad Robot"
+    ],
+    "Website": [
+      "N/A"
+    ]
+  }
+}

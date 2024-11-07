@@ -8,40 +8,98 @@ bots:
   generator:
     image: "botica-bot-restest-generator"
     mount:
-      - source: "./resources"
-        target: "/app/resources"
-      - source: "./resources/config.properties"
-        target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
-      - source: "./output"
-        target: "/app/output"
+      - source: "./src"
+        target: "/app/src"
+      - source: "./target"
+        target: "/app/target"
         createHostPath: true
     publish:
       key: "test_execution"
       order: "execute_test_cases"
     lifecycle:
       type: proactive
-      initialDelay: 0
       period: 60
     instances:
-      generator-anapioficeandfire:
+      generator-marvel-r-art-custom:
         environment:
-          - USER_CONFIG_PATH=/app/resources/anapioficeandfire.com/user-config.properties
-      generator-restcountries:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_art_custom/props.properties
+      generator-marvel-r-ft:
         environment:
-          - USER_CONFIG_PATH=/app/resources/restcountries.com/user-config.properties
-#      generator-amadeus:
-#        environment:
-#          - USER_CONFIG_PATH=/app/resources/amadeus.com/user-config.properties
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_ft_/props.properties
+      generator-marvel-r-rt-custom:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_rt_custom/props.properties
+      generator-marvel-r-rt-perturbation:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_rt_perturbation/props.properties
+      generator-marvel-r-rt-stateful:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Marvel/r_rt_stateful/props.properties
+
+      generator-stripe-r-cbt-custom:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/r_cbt_custom/props.properties
+      generator-stripe-rw-art-custom:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_art_custom/props.properties
+      generator-stripe-rw-cbt-custom:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_cbt_custom/props.properties
+      generator-stripe-rw-cbt-perturbation:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_cbt_perturbation/props.properties
+      generator-stripe-rw-cbt-stateful:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_cbt_stateful/props.properties
+      generator-stripe-rw-ft:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_ft_/props.properties
+      generator-stripe-rw-rt-custom:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Stripe_Products/rw_rt_custom/props.properties
+
+      generator-omdb-r-cbt-custom:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_cbt_custom/props.properties
+      generator-omdb-r-cbt-perturbation:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_cbt_perturbation/props.properties
+      generator-omdb-r-cbt-semantic:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_cbt_semantic/props.properties
+      generator-omdb-r-cbt-stateful:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_cbt_stateful/props.properties
+      generator-omdb-r-ft:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_ft_/props.properties
+      generator-omdb-r-rt-custom:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/OMDb/r_rt_custom/props.properties
+
+      generator-restcountries-r-ft:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Restcountries/r_ft_/props.properties
+      generator-restcountries-r-rt-custom:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Restcountries/r_rt_custom/props.properties
+      generator-restcountries-r-rt-perturbation:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Restcountries/r_rt_perturbation/props.properties
+      generator-restcountries-r-rt-semantic:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Restcountries/r_rt_semantic/props.properties
+      generator-restcountries-r-rt-stateful:
+        environment:
+          - USER_CONFIG_PATH=src/test/resources/taas_eval/Restcountries/r_rt_stateful/props.properties
 
   executor:
     image: "botica-bot-restest-executor"
     mount:
-      - source: "./resources"
-        target: "/app/resources"
-      - source: "./resources/config.properties"
-        target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
-      - source: "./output"
-        target: "/app/output"
+      - source: "./src"
+        target: "/app/src"
+      - source: "./target"
+        target: "/app/target"
         createHostPath: true
     publish:
       key: "test_reporting"
@@ -56,18 +114,22 @@ bots:
       executor-1: { }
       executor-2: { }
       executor-3: { }
+      executor-4: { }
+      executor-5: { }
+      executor-6: { }
+      executor-7: { }
+      executor-8: { }
+      executor-9: { }
 
   reporter:
     image: "botica-bot-restest-reporter"
     mount:
       - source: "./RESTest/allure"
         target: "/app/allure"
-      - source: "./resources"
-        target: "/app/resources"
-      - source: "./resources/config.properties"
-        target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
-      - source: "./output"
-        target: "/app/output"
+      - source: "./src"
+        target: "/app/src"
+      - source: "./target"
+        target: "/app/target"
         createHostPath: true
     subscribe:
       - key: "test_reporting"

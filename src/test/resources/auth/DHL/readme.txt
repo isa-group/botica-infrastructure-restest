@@ -1,0 +1,1 @@
+You need to replace the string "CENSORED" with a valid authentication token.

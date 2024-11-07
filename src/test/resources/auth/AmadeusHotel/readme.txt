@@ -1,0 +1,1 @@
+In each "oauth.json" file, you need to replace the strings "CENSORED" with valid client_id's and client_secret's. These are obtained when creating a developer account in Amadeus and registering an application.

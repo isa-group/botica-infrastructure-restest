@@ -1,0 +1,10 @@
+{
+	"refresh_endpoint": "https://accounts.spotify.com/api/token",
+	"refresh_body": "grant_type=refresh_token&refresh_token=CENSORED&client_id=CENSORED&client_secret=CENSORED",
+	"refresh_headers": {
+		"Content-Type": "application/x-www-form-urlencoded"
+	},
+	"expires_in_property": "expires_in",
+	"response_token_property": "access_token",
+	"oauth_header_format": "Bearer response_token_property"
+}

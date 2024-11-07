@@ -1,0 +1,1 @@
+In the "oauth.json" file, you need to replace the strings "CENSORED" with a valid client_id, client_secret and refresh_token. These are obtained when creating a developer account in Spotify and registering an application.
