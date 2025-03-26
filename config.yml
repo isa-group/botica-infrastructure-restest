@@ -36,12 +36,12 @@ bots:
       generator-anapioficeandfire:
         environment:
           - USER_CONFIG_PATH=/app/resources/anapioficeandfire.com/user-config.properties
-        generator-restcountries:
-          environment:
-            - USER_CONFIG_PATH=/app/resources/restcountries.com/user-config.properties
-        generator-amadeus:
-          environment:
-            - USER_CONFIG_PATH=/app/resources/amadeus.com/user-config.properties
+      generator-restcountries:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/restcountries.com/user-config.properties
+      generator-amadeus:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/amadeus.com/user-config.properties
     environment:
       - PROXY_BOT_ID=proxy-1
 
