@@ -1,9 +1,3 @@
-broker:
-  type: rabbitmq
-  username: "username"
-  password: "password"
-  port: 5672
-
 bots:
   generator:
     image: "botica-bot-restest-generator"
@@ -15,26 +9,26 @@ bots:
       - source: "./output"
         target: "/app/output"
         createHostPath: true
-    publish:
-      key: "test_execution"
-      order: "execute_test_cases"
     lifecycle:
       type: proactive
-      initialDelay: 0
       period: 60
+    subscribe:
+      - key: "generator_bots_advice"
+        strategy: broadcast
     instances:
       generator-anapioficeandfire:
         environment:
           - USER_CONFIG_PATH=/app/resources/anapioficeandfire.com/user-config.properties
-      generator-restcountries:
-        environment:
-          - USER_CONFIG_PATH=/app/resources/restcountries.com/user-config.properties
-#      generator-amadeus:
-#        environment:
-#          - USER_CONFIG_PATH=/app/resources/amadeus.com/user-config.properties
+        generator-restcountries:
+          environment:
+            - USER_CONFIG_PATH=/app/resources/restcountries.com/user-config.properties
+        generator-amadeus:
+          environment:
+            - USER_CONFIG_PATH=/app/resources/amadeus.com/user-config.properties
 
   executor:
     image: "botica-bot-restest-executor"
+    replicas: 5
     mount:
       - source: "./resources"
         target: "/app/resources"
@@ -43,22 +37,13 @@ bots:
       - source: "./output"
         target: "/app/output"
         createHostPath: true
-    publish:
-      key: "test_reporting"
-      order: "generate_test_report"
     subscribe:
-      - key: "test_execution"
+      - key: "executor_bots"
         strategy: distributed
-    lifecycle:
-      type: reactive
-      order: "execute_test_cases"
-    instances:
-      executor-1: { }
-      executor-2: { }
-      executor-3: { }
 
   reporter:
     image: "botica-bot-restest-reporter"
+    replicas: 2
     mount:
       - source: "./RESTest/allure"
         target: "/app/allure"
@@ -70,11 +55,5 @@ bots:
         target: "/app/output"
         createHostPath: true
     subscribe:
-      - key: "test_reporting"
+      - key: "reporter_bots"
         strategy: distributed
-    lifecycle:
-      type: reactive
-      order: "generate_test_report"
-    instances:
-      reporter-1: { }
-      reporter-2: { }

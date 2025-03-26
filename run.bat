@@ -1,55 +1,73 @@
 @echo off
-setlocal enabledelayedexpansion
+setlocal EnableDelayedExpansion
 
-set "DIRECTOR_JAR=botica-director.jar"
-set "VERSION_FILE=botica-director-version.txt"
-set "LATEST_RELEASE_URL=https://api.github.com/repos/isa-group/botica/releases/latest"
-set "DOWNLOAD_URL=https://github.com/isa-group/botica/releases/latest/download/botica-director.jar"
+set VERSION_FILE=.botica-director-version
+set DIRECTOR_JAR=botica-director.jar
+set LATEST_RELEASE_URL=https://api.github.com/repos/isa-group/botica/releases/latest
+set DOWNLOAD_URL=https://github.com/isa-group/botica/releases/latest/download/botica-director.jar
+set JAVA_CMD=
 
-:check_java_version
-for /f "tokens=2 delims==" %%i in ('java -version 2^>^&1 ^| findstr /r "version" ^| findstr "1[1-9]"') do (
-    set "JAVA_VERSION=%%i"
-)
-if "%JAVA_VERSION%"=="" (
-    echo Error: Java is not installed or is not version 11 or higher. Please install Java 11 or higher and try again.
-    exit /b 1
-)
-exit /b 0
+call :CheckJavaVersion
+if %ERRORLEVEL% neq 0 exit /b 1
 
-call :check_java_version
-
-:get_latest_release
-for /f "tokens=3 delims=: " %%i in ('curl -s %LATEST_RELEASE_URL% ^| findstr /i "tag_name"') do (
-    set "LATEST_VERSION=%%i"
-    set "LATEST_VERSION=!LATEST_VERSION:"=!"
-)
-exit /b 0
-
-call :get_latest_release
-
-:download_botica_director
-echo Downloading the latest version (%LATEST_VERSION%)...
-curl -L -o %DIRECTOR_JAR% %DOWNLOAD_URL%
-if %errorlevel% neq 0 (
-    echo Error: Failed to download Botica Director. Please check your internet connection and try again.
-    exit /b 1
-)
-echo %LATEST_VERSION% > %VERSION_FILE%
-exit /b 0
-
-if exist %DIRECTOR_JAR% (
-    if exist %VERSION_FILE% (
-        set /p LOCAL_VERSION=<%VERSION_FILE%
-        if "%LATEST_VERSION%"=="%LOCAL_VERSION%" (
-            echo The latest version (%LATEST_VERSION%) is already downloaded.
-            goto run_director
+call :GetLatestRelease
+if %ERRORLEVEL% neq 0 (
+    if exist "%DIRECTOR_JAR%" (
+        echo Warning: Failed to fetch the latest release version. Please check your internet connection.
+    ) else (
+        echo Error: Failed to download Botica Director. Please check your internet connection and try again.
+        exit /b 1
+    )
+) else (
+    if exist "%DIRECTOR_JAR%" if exist "%VERSION_FILE%" (
+        set /p LOCAL_VERSION=<"%VERSION_FILE%"
+        if not "!LATEST_VERSION!"=="!LOCAL_VERSION!" (
+            echo A new version (!LATEST_VERSION!) is available.
+            call :DownloadBoticaDirector
         )
+    ) else (
+        call :DownloadBoticaDirector
     )
 )
 
-call :download_botica_director
+"%JAVA_CMD%" -jar %DIRECTOR_JAR% %*
+exit /b 0
 
-:run_director
-java -jar %DIRECTOR_JAR% %*
+:CheckJavaVersion
+where java >nul 2>&1
+if %ERRORLEVEL% equ 0 (
+    set JAVA_CMD=java
+) else if defined JAVA_HOME if exist "%JAVA_HOME%\bin\java.exe" (
+    set JAVA_CMD=%JAVA_HOME%\bin\java.exe
+) else (
+    echo Error: Java is not installed on this machine. Please install Java 11 or higher and try again.
+    exit /b 1
+)
 
-endlocal
+for /f "tokens=1,2,3 delims=._" %%a in ('"%JAVA_CMD%" -version 2^>^&1 ^| findstr /i "version"') do (
+    set JAVA_VER=%%b
+)
+
+if %JAVA_VER% geq 11 (
+    exit /b 0
+) else (
+    echo Error: you need at least Java 11 to run Botica. Found version: %JAVA_VER%. Please install Java 11 or higher and try again.
+    exit /b 1
+)
+
+:GetLatestRelease
+for /f "delims=" %%a in ('powershell -Command "(Invoke-RestMethod -Uri '%LATEST_RELEASE_URL%').tag_name"') do (
+    set LATEST_VERSION=%%a
+)
+if not defined LATEST_VERSION exit /b 1
+exit /b 0
+
+:DownloadBoticaDirector
+echo Downloading the latest version (!LATEST_VERSION!)...
+powershell -Command "Invoke-WebRequest -Uri '%DOWNLOAD_URL%' -OutFile '%DIRECTOR_JAR%'"
+if %ERRORLEVEL% neq 0 (
+    echo Error: Failed to download Botica Director. Please check your internet connection and try again.
+    exit /b 1
+)
+echo !LATEST_VERSION!>"%VERSION_FILE%"
+exit /b 0

@@ -13,5 +13,8 @@
 .botica-director-version
 botica-director.jar
 
-# Bot output files
+# Bot Files
+.telegram-bot-data/
 /output/
+
+.env
