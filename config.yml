@@ -1,4 +1,21 @@
 bots:
+  proxy:
+    image: "botica-bot-restest-proxy"
+    replicas: 1
+
+  telegram-frontend:
+    image: "botica-bot-telegram-frontend"
+    replicas: 1
+    mount:
+      - source: ".telegram-bot-data"
+        target: "/app/.telegram-bot-data"
+        createHostPath: true
+    subscribe:
+      - key: "telegram_bot"
+        strategy: broadcast
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+
   generator:
     image: "botica-bot-restest-generator"
     mount:
@@ -25,6 +42,8 @@ bots:
         generator-amadeus:
           environment:
             - USER_CONFIG_PATH=/app/resources/amadeus.com/user-config.properties
+    environment:
+      - PROXY_BOT_ID=proxy-1
 
   executor:
     image: "botica-bot-restest-executor"
