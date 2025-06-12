@@ -1,0 +1,68 @@
+---
+auth:
+  required: true
+  queryParams: { }
+  headerParams: { }
+  apiKeysPath: NYTimesBooks/apiKeys.json
+  headersPath: null
+  oauthPath: null
+testConfiguration:
+  operations:
+    - testPath: /lists/{date}/{list}.json
+      operationId: GET_lists-date-list-json
+      method: get
+      testParameters:
+        - name: list
+          in: path
+          weight: null
+          generators:
+            - type: RandomInputValue
+              genParameters:
+                - name: csv
+                  values:
+                    - /app/resources/NYTimesBooks/input_values/list.csv
+                  objectValues: null
+              valid: true
+        - name: date
+          in: path
+          generators:
+            - type: RandomDate
+              genParameters:
+                - name: startDate
+                  values:
+                    - 2017-01-01
+                  objectValues: null
+                - name: endDate
+                  values:
+                    - 2025-06-11
+                  objectValues: null
+                - name: format
+                  values:
+                    - yyyy-MM-dd
+                  objectValues: null
+              valid: true
+      expectedResponse: 200
+    - testPath: /lists/overview.json
+      operationId: GET_lists-overview-json
+      method: get
+      testParameters:
+        - name: published_date
+          in: query
+          weight: 0.5
+          generators:
+            - type: RandomDate
+              genParameters:
+                - name: startDate
+                  values:
+                    - 2017-01-01
+                  objectValues: null
+                - name: endDate
+                  values:
+                    - 2025-06-11
+                  objectValues: null
+                - name: format
+                  values:
+                    - yyyy-MM-dd
+                  objectValues: null
+              valid: true
+      expectedResponse: 200

@@ -1,0 +1,122 @@
+---
+auth:
+  required: true
+  queryParams: {}
+  headerParams: {}
+  apiKeysPath: null
+  headersPath: null
+  oauthPath: null
+testConfiguration:
+  operations:
+  - testPath: /search
+    operationId: search
+    method: get
+    testParameters:
+    - name: term
+      in: query
+      weight: null
+      generators:
+      - type: RandomEnglishWord
+        genParameters:
+        - name: maxWords
+          values:
+          - 1
+          objectValues: null
+        valid: true
+    - name: country
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: csv
+          values: # Countries not supported by the API (i.e., they return a 400 code) have been removed from the CSV
+          - /app/resources/iTunes/input_values/country_codes.csv
+          objectValues: null
+        valid: true
+    - name: media
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - movie
+          - podcast
+          - music
+          - musicVideo
+          - audiobook
+          - shortFilm
+          - tvShow
+          - software
+          - ebook
+          - all
+          objectValues: null
+        valid: true
+    - name: entity
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: csv
+          values:
+          - /app/resources/iTunes/input_values/entities.csv
+          objectValues: null
+        valid: true
+    - name: attribute
+      in: query
+      weight: 0.2
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: csv
+          values:
+          - /app/resources/iTunes/input_values/attributes.csv
+          objectValues: null
+        valid: true
+    - name: limit
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomNumber
+        genParameters:
+        - name: type
+          values:
+          - integer
+          objectValues: null
+        - name: min
+          values:
+          - 1
+          objectValues: null
+        - name: max
+          values:
+          - 200
+          objectValues: null
+        valid: true
+    - name: lang
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - en_us
+          - ja_jp
+          objectValues: null
+        valid: true
+    - name: explicit
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - Yes
+          - No
+          objectValues: null
+        valid: true
+    expectedResponse: 200

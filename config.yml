@@ -1,14 +1,15 @@
 bots:
   proxy:
     image: "botica-bot-restest-proxy"
-    replicas: 1
 
   telegram-frontend:
     image: "botica-bot-telegram-frontend"
-    replicas: 1
     mount:
       - source: ".telegram-bot-data"
         target: "/app/.telegram-bot-data"
+        createHostPath: true
+      - source: "./output"
+        target: "/app/output"
         createHostPath: true
     subscribe:
       - key: "telegram_bot"
@@ -21,6 +22,8 @@ bots:
     mount:
       - source: "./resources"
         target: "/app/resources"
+      - source: "./auth"
+        target: "/app/src/test/resources/auth" # hardcoded location in RESTest, will open issue
       - source: "./resources/config.properties"
         target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
       - source: "./output"
@@ -28,26 +31,93 @@ bots:
         createHostPath: true
     lifecycle:
       type: proactive
-      period: 60
+      period: 100
     subscribe:
-      - key: "generator_bots_advice"
+      - key: "proxy_advice"
         strategy: broadcast
-    instances:
-      generator-anapioficeandfire:
-        environment:
-          - USER_CONFIG_PATH=/app/resources/anapioficeandfire.com/user-config.properties
-      generator-restcountries:
-        environment:
-          - USER_CONFIG_PATH=/app/resources/restcountries.com/user-config.properties
-      generator-amadeus:
-        environment:
-          - USER_CONFIG_PATH=/app/resources/amadeus.com/user-config.properties
     environment:
       - PROXY_BOT_ID=proxy-1
+    instances:
+      generator-amadeus-city-search:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/AmadeusCitySearch/amadeus_city_search.properties
+      generator-amadeus-hotel:
+        lifecycle:
+          type: proactive
+          period: 100
+          initialDelay: 60
+        environment:
+          - USER_CONFIG_PATH=/app/resources/AmadeusHotel/amadeus.properties
+      generator-deutschebahn:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/Deutschebahn/deutschebahn.properties
+      generator-fdic:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/FDIC/fdic.properties
+      generator-foursquare:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/Foursquare/foursquare.properties
+      generator-github-get-org-repos:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/GitHub/createAnOrganizationRepository/github_createAnOrganizationRepository.properties
+      generator-gitlab-get-project-badges:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/GitLab/getApiV4ProjectsIdBadges/gitlab_getApiV4ProjectsIdBadges.properties
+      generator-gitlab-get-project-jobs:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/GitLab/listProjectJobs/gitlab_listProjectJobs.properties
+      generator-itunes:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/iTunes/iTunes.properties
+      generator-languagetool-dutch:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/LanguageTool/dutch/languagetool_dutch.properties
+      generator-languagetool-english:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/LanguageTool/english/languagetool_english.properties
+      generator-languagetool-french:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/LanguageTool/french/languagetool_french.properties
+      generator-languagetool-german:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/LanguageTool/german/languagetool_german.properties
+      generator-languagetool-portuguese:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/LanguageTool/portuguese/languagetool_portuguese.properties
+      generator-languagetool-spanish:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/LanguageTool/spanish/languagetool_spanish.properties
+      generator-marvel:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/Marvel/getComicById/marvel_getComicById.properties
+      generator-nytimesbooks:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/NYTimesBooks/nytimesbooks.properties
+      generator-ohsome:
+        lifecycle:
+          type: proactive
+          period: 480
+        environment:
+          - USER_CONFIG_PATH=/app/resources/Ohsome/ohsome.properties
+      generator-omdb-find:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/OMDb/ByIdOrTitle/omdb_byIdOrTitle.properties
+      generator-omdb-search:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/OMDb/BySearch/omdb_bySearch.properties
+      generator-restcountries:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/RESTCountries/restCountries.properties
+      generator-yelp:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/Yelp/yelp.properties
+      generator-youtube:
+        environment:
+          - USER_CONFIG_PATH=/app/resources/YouTube/getVideos/youtube_getVideos.properties
 
   executor:
     image: "botica-bot-restest-executor"
-    replicas: 5
+    replicas: 6
     mount:
       - source: "./resources"
         target: "/app/resources"
@@ -59,6 +129,8 @@ bots:
     subscribe:
       - key: "executor_bots"
         strategy: distributed
+      - key: "proxy_advice"
+        strategy: broadcast
 
   reporter:
     image: "botica-bot-restest-reporter"
@@ -68,6 +140,8 @@ bots:
         target: "/app/allure"
       - source: "./resources"
         target: "/app/resources"
+      - source: "./auth"
+        target: "/app/src/test/resources/auth" # hardcoded location in RESTest, will open issue
       - source: "./resources/config.properties"
         target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
       - source: "./output"
@@ -76,3 +150,20 @@ bots:
     subscribe:
       - key: "reporter_bots"
         strategy: distributed
+
+  oracle-identifier:
+    image: "botica-bot-restest-oracle-identifier"
+    replicas: 1
+    mount:
+      - source: "./resources"
+        target: "/app/resources"
+      - source: "./resources/config.properties"
+        target: "/app/src/main/resources/config.properties" # hardcoded location in RESTest, will open issue
+      - source: "./output"
+        target: "/app/output"
+        createHostPath: true
+    subscribe:
+      - key: "oracle_identifier_bots"
+        strategy: distributed
+    environment:
+      - ORACLE_BOT_MIN_TEST_CASES=50

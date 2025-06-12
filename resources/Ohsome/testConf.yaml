@@ -1,0 +1,175 @@
+---
+auth:
+  required: true
+  queryParams: {}
+  headerParams: {}
+  apiKeysPath: null
+  headersPath: null
+  oauthPath: null
+testConfiguration:
+  operations:
+  - testPath: "/elements/{aggregation}"
+    operationId: elementsAggregation
+    method: get
+    testParameters:
+    - name: aggregation
+      in: path
+      weight: null
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - area
+          - count
+          - length
+          - perimeter
+          objectValues: null
+        valid: true
+    - name: bboxes
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: csv
+          values:
+          - /app/resources/Ohsome/input_values/bboxes_values.csv
+          objectValues: null
+        valid: true
+    - name: bcircles
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+          - name: csv
+            values:
+              - /app/resources/Ohsome/input_values/bcircles_values.csv
+            objectValues: null
+        valid: true
+    - name: bpolys
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+          - name: csv
+            values:
+              - /app/resources/Ohsome/input_values/bpolys_values.csv
+            objectValues: null
+        valid: true
+    - name: time
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomDate
+        genParameters:
+          - name: startDate
+            values:
+              - 2007-10-08
+            objectValues: null
+          - name: endDate
+            values:
+              - 2024-12-18
+            objectValues: null
+          - name: format
+            values:
+              - yyyy-MM-dd'T'HH:mm:ss'Z'
+            objectValues: null
+      - type: RandomDate
+        genParameters:
+          - name: startDate
+            values:
+              - 2007-10-08
+            objectValues: null
+          - name: endDate
+            values:
+              - 2024-12-18
+            objectValues: null
+          - name: format
+            values:
+              - yyyy-MM-dd
+            objectValues: null
+      - type: RandomInputValue
+        genParameters:
+          - name: values
+            values:
+              - "/"
+            objectValues: null
+      - type: RandomRegExp
+        genParameters:
+          - name: regExp
+            values:
+              - (//P[1-9]{1}Y[1-9]{1}M[1-9]{1}D)
+            objectValues: null
+      - type: RandomRegExp
+        genParameters:
+          - name: regExp
+            values:
+              - (/201[0-9]{1}-0[1-9]{1}-[012]{1}[1-9]{1})
+            objectValues: null
+      - type: RandomRegExp
+        genParameters:
+          - name: regExp
+            values:
+              - (201[0-9]{1}-0[1-9]{1}-[012]{1}[1-9]{1}/)
+            objectValues: null
+      - type: RandomRegExp
+        genParameters:
+          - name: regExp
+            values:
+              - (201[0-9]{1}-0[1-9]{1}-[012]{1}[1-9]{1}//P[1-3]{1}Y[1-9]{1}M[1-9]{1}D)
+            objectValues: null
+      - type: RandomRegExp
+        genParameters:
+          - name: regExp
+            values:
+              - (/201[0-9]{1}-0[1-9]{1}-[012]{1}[1-9]{1}/P[1-3]{1}Y[1-9]{1}M[1-9]{1}D)
+            objectValues: null
+        valid: true
+    - name: filter
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: csv
+          values:
+          - /app/resources/Ohsome/input_values/filter_values.csv
+          objectValues: null
+        valid: true
+    - name: showMetadata
+      in: query
+      weight: 0.5
+      generators:
+      - type: RandomInputValue
+        genParameters:
+        - name: values
+          values:
+          - yes
+          - no
+          - true
+          - false
+          objectValues: null
+        valid: true
+    - name: timeout
+      in: query
+      weight: 1.0
+      generators:
+        - type: RandomNumber
+          genParameters:
+            - name: type
+              values:
+                - integer
+              objectValues: null
+            - name: min
+              values:
+                - 120
+              objectValues: null
+            - name: max
+              values:
+                - 130
+              objectValues: null
+          valid: true
+    expectedResponse: 200
